@@ -76,6 +76,22 @@ def ultimasMediciones(request):
             detalleViento = sensorViento.objects.get(idMuestreo=ultimoRegistroSensores.id)
         except ObjectDoesNotExist:
             detalleViento = None
+        try:
+            detallePm25 = sensorPm25.objects.get(idMuestreo=ultimoRegistroSensores.id)
+        except ObjectDoesNotExist:
+            detallePm25 = None
+        try:
+            detallePm10 = sensorPm10.objects.get(idMuestreo=ultimoRegistroSensores.id)
+        except ObjectDoesNotExist:
+            detallePm10 = None
+        try:
+            detalleCo = sensorCo.objects.get(idMuestreo=ultimoRegistroSensores.id)
+        except ObjectDoesNotExist:
+            detalleCo = None
+        try:
+            detalleO3=sensorO3.objects.get(idMuestreo=ultimoRegistroSensores.id)
+        except ObjectDoesNotExist:
+            detalleO3 = None
 
     except ObjectDoesNotExist:
         ultimoRegistroSensores = None
@@ -87,7 +103,11 @@ def ultimasMediciones(request):
         'detalleTemperatura':detalleTemperatura,
         'detalleLuz':detalleLuz,
         'detallePresion':detallePresion,
-        'detalleViento':detalleViento
+        'detalleViento':detalleViento,
+        'detallePm25':detallePm25,
+        'detallePm10':detallePm10,
+        'detalleCo':detalleCo,
+        'detalleO3':detalleO3
     })
 
 def sensorHumedadDetalle(request):

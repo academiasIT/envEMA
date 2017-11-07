@@ -18,6 +18,10 @@ class estadoSensores(models.Model):
     estadoSensorPresion = models.BooleanField()
     estadoSensorTemperatura = models.BooleanField()
     estadoSensorViento = models.BooleanField()
+    estadoSensorPm25 = models.BooleanField()
+    estadoSensorPm10 = models.BooleanField()
+    estadoSensorCo = models.BooleanField()
+    estadoSensorO3 = models.BooleanField()
 
 class sensorPm25(models.Model):
     pm25 = models.FloatField()
