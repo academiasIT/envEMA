@@ -31,10 +31,6 @@ class sensorco(models.Model):
     co = models.FloatField()
     idMuestreo = models.ForeignKey(registroEjecucion, on_delete=models.CASCADE)
 
-class sensoro3():
-    o3 = models.FloatField()
-    idMuestreo = models.ForeignKey(registroEjecucion, on_delete=models.CASCADE)
-
 class sensorTemperatura(models.Model):
     temperatura = models.FloatField()
     idMuestreo = models.ForeignKey(registroEjecucion, on_delete=models.CASCADE)
