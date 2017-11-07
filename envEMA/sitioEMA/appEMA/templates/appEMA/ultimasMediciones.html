@@ -1,0 +1,152 @@
+<!DOCTYPE HTML>
+<!--
+	Helios by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+{# Load the tag library #}
+{% load bootstrap3 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+{% load static %}
+<html>
+<head>
+    <title>Estado de los Sensores</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--[if lte IE 8]>
+    <script src="{%static 'assets/js/ie/html5shiv.js'%}"></script><![endif]-->
+    <link rel="stylesheet" href="{%static 'assets/css/main.css'%}"/>
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="{%static 'assets/css/ie8.css'%}"/><![endif]-->
+</head>
+<body class="no-sidebar">
+<div id="page-wrapper">
+
+    <!-- Header -->
+    <div id="header">
+
+        <!-- Nav -->
+        <nav id="nav">
+            <ul>
+                <li><a href="/appEMA">Home</a></li>
+                <li>
+                    <a href="#">Configuración</a>
+                    <ul>
+                        <li><a href="../estadoSensores">Estado de Sensores</a></li>
+                        <li><a href="../estadoConexion">Estado de Conexion</a></li>
+                        <li>
+                            <a href="#">Configuración por sensor</a>
+                            <ul>
+                                <li><a href="../sensorTemperatura">Temperatura</a></li>
+                                <li><a href="../sensorHumedad">Humedad</a></li>
+                                <li><a href="../sensorHumedadSuelo">Humedad de Suelo</a></li>
+                                <li><a href="../sensorPresionAtmosferica">Presión Atmosférica</a></li>
+                                <li><a href="../sensorViento">Viento</a></li>
+                                <li><a href="../sensorLuz">Luz</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="../ultimasMediciones">Últimas Mediciones</a></li>
+                <li><a href="../datosPublicos">Datos Públicos</a></li>
+                <li><a href="../graficos">Gráficos</a></li>
+            </ul>
+        </nav>
+
+    </div>
+
+
+    <!-- Main -->
+    <div class="wrapper style1">
+
+        <div class="container">
+            <article id="main" class="special">
+                <header>
+                    <h2><a href="#">Ultimas Mediciones</a></h2>
+                </header>
+                {%if ultimoRegistroSensores%}
+                <div class="col-md-4"><strong>ID del registro:</strong> {{ultimoRegistroSensores.id}}</div>
+                <div class="col-md-4"><strong>Fecha registro:</strong> {{ultimoRegistroSensores.fechaRegistro |date:"d M, Y"}}
+                </div>
+                <div class="col-md-4"><strong>Origen del registro:</strong> {{ultimoRegistroSensores.origenMuestreo}}
+                </div>
+                {%endif%}
+                <br/><br/>
+                <div class="">
+                    <div class="">
+                        <table class="table table-hover">
+                            {%if ultimoRegistroSensores%}
+                            <tr>
+                                <th><strong>Sensor</strong></th>
+                                <th><strong>Valor medido</strong></th>
+                                <th><strong>Unidad de Medida</strong></th>
+                            </tr>
+                            <tr>
+                                <td>Humedad Ambiental</td>
+                                <td>{{detalleHumedad.humedad}}</td>
+                                <td>%</td>
+                            </tr>
+                            <tr>
+                                <td>Humedad Suelo</td>
+                                <td>{{detalleHumedadPiso.humedad}}</td>
+                                <td>%</td>
+                            </tr>
+                            <tr>
+                                <td>Luz</td>
+                                <td>{{detalleLuz.lux}}</td>
+                                <td>lux</td>
+                            </tr>
+                            <tr>
+                                <td>Presión Atmosférica</td>
+                                <td>{{detallePresion.presion}}</td>
+                                <td>atm</td>
+                            </tr>
+                            <tr>
+                                <td>Temperatura</td>
+                                <td>{{detalleTemperatura.temperatura}}</td>
+                                <td>°C</td>
+                            </tr>
+                            <tr>
+                                <td>Viento</td>
+                                <td>{{detalleViento.kmPorHora}}</td>
+                                <td>Km/h</td>
+                            </tr>
+                            {%else%}
+                            <tr>
+                                <td>Aún no se leen los sensores</td>
+                            </tr>
+                            {%endif%}
+                        </table>
+
+            </article>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer">
+        <div class="container">
+        </div>
+    </div>
+
+</div>
+
+<!-- Scripts -->
+<script src="{%static '/assets/js/jquery.min.js'%}"></script>
+<script src="{%static '/assets/js/jquery.dropotron.min.js'%}"></script>
+<script src="{%static '/assets/js/jquery.scrolly.min.js'%}"></script>
+<script src="{%static '/assets/js/jquery.onvisible.min.js'%}"></script>
+<script src="{%static '/assets/js/skel.min.js'%}"></script>
+<script src="{%static '/assets/js/util.js'%}"></script>
+<!--[if lte IE 8]>
+<script src="{%static '/assets/js/ie/respond.min.js'%}"></script><![endif]-->
+<script src="{%static '/assets/js/main.js'%}"></script>
+
+</body>
+</html>
