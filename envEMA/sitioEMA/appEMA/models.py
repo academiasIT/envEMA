@@ -19,16 +19,20 @@ class estadoSensores(models.Model):
     estadoSensorTemperatura = models.BooleanField()
     estadoSensorViento = models.BooleanField()
 
-class sensorpm25(models.Model):
+class sensorPm25(models.Model):
     pm25 = models.FloatField()
     idMuestreo = models.ForeignKey(registroEjecucion, on_delete=models.CASCADE)
 
-class sensorpm10(models.Model):
+class sensorPm10(models.Model):
     pm10 = models.FloatField()
     idMuestreo = models.ForeignKey(registroEjecucion, on_delete=models.CASCADE)
 
-class sensorco(models.Model):
+class sensorCo(models.Model):
     co = models.FloatField()
+    idMuestreo = models.ForeignKey(registroEjecucion, on_delete=models.CASCADE)
+
+class sensorO3(models.Model):
+    o3 = models.FloatField()
     idMuestreo = models.ForeignKey(registroEjecucion, on_delete=models.CASCADE)
 
 class sensorTemperatura(models.Model):

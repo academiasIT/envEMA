@@ -11,7 +11,7 @@ from .models import registroEjecucion, \
     sensorPresion, \
     sensorViento, \
     sensorLuz, \
-    estadoSensores, sensorco
+    estadoSensores, sensorCo, sensorPm25, sensorPm10, sensorO3
 
 admin.site.register(registroEjecucion)
 admin.site.register(sensorTemperatura)
@@ -21,4 +21,7 @@ admin.site.register(sensorPresion)
 admin.site.register(sensorViento)
 admin.site.register(sensorLuz)
 admin.site.register(estadoSensores)
-admin.site.register(sensorco)
+admin.site.register(sensorCo)
+admin.site.register(sensorPm25)
+admin.site.register(sensorPm10)
+admin.site.register(sensorO3)
