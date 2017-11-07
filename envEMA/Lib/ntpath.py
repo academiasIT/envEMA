@@ -5,11 +5,12 @@ Instead of importing this module directly, import os and refer to this
 module as os.path.
 """
 
-import sys
-
-import genericpath
 import os
+import sys
+import stat
+import genericpath
 import warnings
+
 from genericpath import *
 from genericpath import _unicode
 

@@ -64,9 +64,7 @@ ImportError exception, it is silently ignored.
 """
 
 import sys
-
 import os
-
 try:
     import __builtin__ as builtins
 except ImportError:

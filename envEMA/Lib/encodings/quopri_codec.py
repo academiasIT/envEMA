@@ -3,9 +3,7 @@
 Like base64 and rot13, this returns Python strings, not Unicode.
 """
 
-import codecs
-import quopri
-
+import codecs, quopri
 try:
     from cStringIO import StringIO
 except ImportError:

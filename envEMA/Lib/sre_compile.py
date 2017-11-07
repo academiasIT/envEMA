@@ -11,8 +11,7 @@
 
 """Internal support module for sre"""
 
-import _sre
-
+import _sre, sys
 import sre_parse
 from sre_constants import *
 

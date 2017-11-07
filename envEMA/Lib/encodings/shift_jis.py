@@ -4,9 +4,8 @@
 # Written by Hye-Shik Chang <perky@FreeBSD.org>
 #
 
-import _codecs_jp
+import _codecs_jp, codecs
 import _multibytecodec as mbc
-import codecs
 
 codec = _codecs_jp.getcodec('shift_jis')
 

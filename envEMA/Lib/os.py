@@ -23,8 +23,7 @@ and opendir), and leave all pathname manipulation to os.path
 
 #'
 
-import errno
-import sys
+import sys, errno
 
 _names = sys.builtin_module_names
 
@@ -79,6 +78,7 @@ elif 'os2' in _names:
         import ntpath as path
     else:
         import os2emxpath as path
+        from _emx_link import link
 
     import os2
     __all__.extend(_get_exports_list(os2))
@@ -117,7 +117,8 @@ else:
     raise ImportError, 'no os specific module found'
 
 sys.modules['os.path'] = path
-from os.path import (curdir, pathsep, defpath)
+from os.path import (curdir, pardir, sep, pathsep, defpath, extsep, altsep,
+    devnull)
 
 del _names
 

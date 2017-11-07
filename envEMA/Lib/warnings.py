@@ -1,11 +1,10 @@
 """Python part of the warnings subsystem."""
 
-import sys
-
 # Note: function level imports should *not* be used
 # in this module as it may cause import lock deadlock.
 # See bug 683658.
 import linecache
+import sys
 import types
 
 __all__ = ["warn", "warn_explicit", "showwarning",

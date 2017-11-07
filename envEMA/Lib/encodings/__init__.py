@@ -28,9 +28,9 @@ Written by Marc-Andre Lemburg (mal@lemburg.com).
 
 """#"
 
-import __builtin__
 import codecs
 from encodings import aliases
+import __builtin__
 
 _cache = {}
 _unknown = '--unknown--'

@@ -6,7 +6,6 @@ that name.
 """
 
 import sys
-
 import os
 
 __all__ = ["getline", "clearcache", "checkcache"]

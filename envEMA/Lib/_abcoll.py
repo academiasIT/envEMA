@@ -8,9 +8,8 @@ via collections; they are defined here only to alleviate certain
 bootstrapping issues.  Unit tests are in test_collections.
 """
 
-import sys
-
 from abc import ABCMeta, abstractmethod
+import sys
 
 __all__ = ["Hashable", "Iterable", "Iterator",
            "Sized", "Container", "Callable",

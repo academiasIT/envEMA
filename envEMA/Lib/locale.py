@@ -9,13 +9,12 @@ maps them to values suitable for passing to the C lib's setlocale() function. It
 also includes default encodings for all supported locale names.
 """
 
-import functools
-import operator
 import sys
-
 import encodings
 import encodings.aliases
 import re
+import operator
+import functools
 
 # keep a copy of the builtin str type, because 'str' name is overridden
 # in globals by a function below

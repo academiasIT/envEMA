@@ -4,9 +4,8 @@
 # Written by Hye-Shik Chang <perky@FreeBSD.org>
 #
 
-import _codecs_iso2022
+import _codecs_iso2022, codecs
 import _multibytecodec as mbc
-import codecs
 
 codec = _codecs_iso2022.getcodec('iso2022_jp_2')
 

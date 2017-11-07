@@ -7,8 +7,7 @@ Written by Marc-Andre Lemburg (mal@lemburg.com).
 
 """#"
 
-import __builtin__
-import sys
+import __builtin__, sys
 
 ### Registry and builtin stateless codec functions
 
@@ -1101,7 +1100,7 @@ except LookupError:
 # package
 _false = 0
 if _false:
-    pass
+    import encodings
 
 ### Tests
 

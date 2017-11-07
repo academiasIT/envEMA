@@ -10,11 +10,10 @@ Some of this can actually be useful on non-Posix systems too, e.g.
 for manipulation of the pathname component of URLs.
 """
 
-import sys
-
-import genericpath
 import os
+import sys
 import stat
+import genericpath
 import warnings
 from genericpath import *
 from genericpath import _unicode

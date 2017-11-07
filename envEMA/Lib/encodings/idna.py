@@ -1,8 +1,6 @@
 # This module implements the RFCs 3490 (IDNA) and 3491 (Nameprep)
 
-import codecs
-import re
-import stringprep
+import stringprep, re, codecs
 from unicodedata import ucd_3_2_0 as unicodedata
 
 # IDNA section 3.1

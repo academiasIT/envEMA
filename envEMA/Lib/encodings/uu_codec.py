@@ -8,9 +8,7 @@
     modified by Jack Jansen and Fredrik Lundh.
 
 """
-import binascii
-import codecs
-
+import codecs, binascii
 
 ### Codec APIs
 
