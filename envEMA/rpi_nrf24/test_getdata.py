@@ -30,7 +30,8 @@ radio.stopListening()
 CMD_START = list('a')
 CMD_ACTIV_RELE = 0x02
 TIME_OUT = 3
-db = sqlite3.connect('../db.sqlite3')
+
+db = sqlite3.connect('../sitioEMA/db.sqlite3')
 radio.write(CMD_START)
 radio.startListening()
 print("(INFO) Sensor inicializado")
