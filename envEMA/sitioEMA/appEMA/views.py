@@ -13,6 +13,10 @@ from .models import *
 from jchart import Chart
 from jchart.config import Axes, DataSet, rgba
 
+#Librerias para exportar a excel
+from excel_response import ExcelResponse
+
+
 def index(request):
     template = loader.get_template('appEMA/index.html')
     return HttpResponse(template.render())
@@ -180,3 +184,28 @@ class graficaHumedad(Chart):
             'data': data,
             'borderColor': 'orange'
         }]
+
+
+def excelMp25(request):
+    objs = sensorPm25.objects.all().order_by('-id')[:1000]
+    return ExcelResponse(objs)
+
+def excelMp10(request):
+    objs = sensorPm10.objects.all().order_by('-id')[:1000]
+    return ExcelResponse(objs)
+
+def excelCo(request):
+    objs = sensorCo.objects.all().order_by('-id')[:1000]
+    return ExcelResponse(objs)
+
+def excelO3(request):
+    objs = sensorO3.objects.all().order_by('-id')[:1000]
+    return ExcelResponse(objs)
+
+def excelHumedad(request):
+    objs = sensorHumedad.objects.all().order_by('-id')[:1000]
+    return ExcelResponse(objs)
+
+def excelTemperatura(request):
+    objs = sensorTemperatura.objects.all().order_by('-id')[:1000]
+    return ExcelResponse(objs)
