@@ -2,11 +2,12 @@ from django.conf.urls import url
 
 from . import views
 
-#from jchart.views import ChartView
-#from views import graficaTemperatura, graficaHumedad
+from . import views
+from jchart.views import ChartView
+from views import graficaTemperatura, graficaHumedad
 
-#grafica_temp = graficaTemperatura()
-#grafica_hum = graficaHumedad()
+grafica_temp = graficaTemperatura()
+grafica_hum = graficaHumedad()
 
 urlpatterns = [
     #ejemplo: /home/
@@ -22,4 +23,6 @@ urlpatterns = [
     url(r'^sensorPresionAtmosferica/$', views.sensorPresionAtmosfericaDetalle, name='sensorPresionAtmosferica'),
     url(r'^sensorTemperatura/$', views.sensorTemperaturaDetalle, name='sensorTemperatura'),
     url(r'^sensorViento/$', views.sensorVientoDetalle, name='sensorViento'),
+    url(r'^charts/line_temperatura/$', ChartView.from_chart(grafica_temp), name='plot_temperaturas'),
+    url(r'^charts/line_humedad/$', ChartView.from_chart(grafica_hum), name='plot_humedad'),
 ]

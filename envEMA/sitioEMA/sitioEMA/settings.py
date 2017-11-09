@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'flat_responsive',
     'colorfield',
     'appEMA.apps.AppemaConfig',
+    'jchart',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

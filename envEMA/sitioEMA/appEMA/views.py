@@ -9,15 +9,20 @@ from django.shortcuts import render
 from django.template import loader
 
 from .models import *
-
+#Librerias necesarias para la construcción de gráficos.
+from jchart import Chart
+from jchart.config import Axes, DataSet, rgba
 
 def index(request):
     template = loader.get_template('appEMA/index.html')
     return HttpResponse(template.render())
 
 def graficos(request):
-    template = loader.get_template('appEMA/graficos.html')
-    return HttpResponse(template.render())
+    #template = loader.get_template('appEMA/graficos.html')
+    #return HttpResponse(template.render())
+    detalle = registroEjecucion.objects.filter().order_by('-id')[0]
+    return render(request, 'appEMA/graficos.html', {'ultimoMuestreo': detalle})
+
 def datosPublicos(request):
     template = loader.get_template('appEMA/datosPublicos.html')
     return HttpResponse(template.render())
@@ -114,7 +119,6 @@ def sensorHumedadDetalle(request):
     template = loader.get_template('appEMA/sensorHumedad.html')
     return HttpResponse(template.render())
 
-
 def sensorHumedadSueloDetalle(request):
     template = loader.get_template('appEMA/sensorHumedadSuelo.html')
     return HttpResponse(template.render())
@@ -134,3 +138,45 @@ def sensorTemperaturaDetalle(request):
 def sensorVientoDetalle(request):
     template = loader.get_template('appEMA/sensorViento.html')
     return HttpResponse(template.render())
+
+#Para incluir graficos
+class graficaTemperatura(Chart):
+    chart_type = 'line'
+    responsive = True
+    scales = {
+        'xAxes': [Axes(type='time', position='bottom')],
+    }
+
+    def get_datasets(self, **kwargs):
+        #Se leen todas las temperaturas desde BD
+        temperaturas = sensorTemperatura.objects.all().order_by('-id')[:10]
+        #Para cada registro de temperatura, se obtiene el ID del muestreo y valor. Se presenta como lista
+        #data = [{'x': temp.idMuestreo_id, 'y': temp.temperatura} for temp in temperaturas]
+        data = [{'x':temp.id, 'y': temp.temperatura} for temp in temperaturas]
+        data_scatter = data
+        data_line = data
+        return [{
+            'type':'line',
+            'label': "Temperatura Registrada",
+            'data': data,
+            'borderColor':'brown'
+        }
+        ]
+
+class graficaHumedad(Chart):
+    chart_type = 'line'
+    responsive = True
+    scales = {
+        'xAxes': [Axes(type='time', position='bottom')],
+    }
+
+    def get_datasets(self, **kwargs):
+        #Se leen todas los registros de Humedad desde BD
+        humedades = sensorHumedad.objects.all().order_by('-id')[:10]
+        #Para cada registro de humedad, se obtiene el ID del muestreo y valor. Se presenta como lista
+        data = [{'y': hum.humedad, 'x': hum.id} for hum in humedades]
+        return [{
+            'label': "Humedad Registrada",
+            'data': data,
+            'borderColor': 'orange'
+        }]
